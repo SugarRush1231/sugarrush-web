@@ -1,0 +1,512 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* General Styling */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    color: var(--text-dark);
+    background: linear-gradient(-45deg,
+            #ffffff,
+            rgba(255, 183, 197, 0.12),
+            #f8f6ff,
+            #ffffff);
+    background-size: 300% 300%;
+    animation: gradientBG 30s ease-in-out infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 183, 197, 0.1), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(200, 210, 255, 0.1), transparent 60%);
+    filter: blur(200px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-h2-1 {
+    animation: slideInUp 2.5s ease-out forwards;
+}
+
+.animate-h2-2 {
+    animation: slideInUp 2.5s ease-out forwards;
+    animation-delay: 0.7s;
+    /* Delay the second h2 */
+}
+
+/* Header */
+header {
+    background-color: #eadbff;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-end; /* Pushes nav to the right */
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Needed for absolute positioning child */
+    min-height: 116px; /* Give header height to contain the logo */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header h1 a {
+    display: inline-block;
+}
+
+header h1 img {
+    height: 100px;
+    /* Reduced height for better responsiveness */
+    max-height: 150px;
+    width: auto;
+    vertical-align: middle;
+}
+
+header nav {
+    /* margin: 0 auto; no longer needed */
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+header nav ul li a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #555;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #ff69b4;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+#hero {
+    background-image: url('https://via.placeholder.com/1500x500');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #000000;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+h2.dream {
+    font-family: "Nanum Pen Script", cursive;
+    font-style: normal;
+    font-weight: lighter;
+}
+
+h2.SugarRush {
+    font-family: "Allura", cursive;
+    background: linear-gradient(to right, #f8f6ff, #eadbff, #ff69b4); /* Thematic gradient from site's existing palette */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 5rem; /* Keep font size at 5rem */
+    font-weight: bolder; /* Keep font-weight bolder */
+}
+
+/* Apply the wipe-right animation to the SugarRush h2, overriding the default slideInUp */
+h2.SugarRush.animate-h2-2 {
+  animation: wipe-right 4s ease-in-out 0.7s forwards;
+  animation-fill-mode: backwards; /* Ensures initial state during delay */
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Members Section */
+.Memberstext {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#groupHeroCard {
+    max-width: 800px;
+    /* Use percentage for width */
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+#groupHeroCard .group-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.group-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes puff-in-center {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-image {
+    animation: puff-in-center 2s ease-out forwards;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.member-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 1.5rem;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.member-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Member Profile Section */
+.member-profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.member-profile > img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    flex: 1 1 300px;
+}
+
+.profile-info {
+    flex: 2 1 400px;
+}
+
+/* .profile-info h2 {
+    font-size: 2.5rem;
+    color: #ff69b4;
+} */
+
+.profile-info p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Music Section */
+#music {
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.album-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.album-card img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 1rem;
+    text-align: left;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #ff69b4;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.footer-section a:hover {
+    color: #ff69b4;
+}
+
+.social-icons a {
+    color: #fff;
+    margin-right: 1rem;
+font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    color: #ff69b4;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header {
+        display: block;
+        position: static;
+        min-height: 0;
+        height: auto;
+    }
+
+    header h1 {
+        position: static;
+        transform: none;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    header nav {
+        justify-content: center;
+        display: flex;
+    }
+
+    header nav ul {
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .hero-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .member-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h2 {
+        font-size: 2rem;
+    }
+
+    header h1 img {
+        height: 80px;
+    }
+
+    header nav ul li a {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+
+    .member-card {
+        font-size: 1.2rem;
+    }
+
+    #music {
+        font-size: 1.2rem;
+    }
+
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer-section p,
+    .footer-section ul,
+    .footer-section a {
+        font-size: 0.9rem;
+    }
+
+    .social-icons a {
+        font-size: 1.2rem;
+    }
+}
+
+/* === Wipe-Right Animation === */
+@keyframes wipe-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+    visibility: hidden; /* Ensure it's hidden during delay and at start */
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    visibility: visible; /* Make it visible as animation progresses */
+  }
+}
+
+/* Apply the wipe-right animation to the SugarRush h2, overriding the default slideInUp */
+h2.SugarRush.animate-h2-2 {
+  animation: wipe-right 4s ease-in-out 0.7s forwards;
+  animation-fill-mode: backwards; /* Ensures initial state during delay */
+}
+
+/* Fade Slider CSS */
+.member-profile { display:flex; gap:24px; max-width:1000px; margin:40px auto; padding:24px; background:#fff; border-radius:12px; }
+.fade-slider { position:relative; width:420px; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background:#eee; }
+.fade-slider .slides { position:relative; width:100%; height:100%; }
+.fade-slider .slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease-in-out; }
+.fade-slider .slide.active { opacity:1; }
+
+.fade-slider .nav { position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:44px; height:44px; border-radius:999px; border:0; background:rgba(0,0,0,.35); color:#fff; font-size:28px; cursor:pointer; }
+.fade-slider .prev { left:10px; }
+.fade-slider .next { right:10px; }
+
+.fade-slider .dots { position:absolute; left:50%; bottom:10px; transform:translateX(-50%); z-index:6; display:flex; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(0,0,0,.25); }
+.fade-slider .dot { width:8px; height:8px; border-radius:999px; border:0; background:rgba(255,255,255,.45); cursor:pointer; }
+.fade-slider .dot.active { background:rgba(255,255,255,.95); }
+
+.desc {
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: #333;
+}
+/* Member Name Colors */
+.jena-color { color: #FFD24D; }
+.rin-color { color: #4A6CF7; }
+.soa-color { color: #FF7AA2; }
+.yul-color { color: #E63946; }

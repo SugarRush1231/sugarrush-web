@@ -134,10 +134,6 @@ header nav ul li a:hover {
 
 /* Hero Section */
 #hero {
-    background-image: url('https://via.placeholder.com/1500x500');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     color: #000000;
     text-align: center;
     padding: 4rem 1rem;
@@ -510,49 +506,3 @@ h2.SugarRush.animate-h2-2 {
 .rin-color { color: #4A6CF7; }
 .soa-color { color: #FF7AA2; }
 .yul-color { color: #E63946; }
-
-/* Cookie Consent Banner */
-.cookie-consent-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #222;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-    z-index: 1000;
-    display: none; /* Initially hidden */
-}
-
-.cookie-consent-banner p {
-    margin: 0 0 1rem 0;
-}
-
-.cookie-consent-banner a {
-    color: #ff69b4;
-    text-decoration: underline;
-}
-
-.cookie-consent-banner button {
-    background-color: #ff69b4;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    transition: background-color 0.3s;
-}
-
-.cookie-consent-banner button:hover {
-    background-color: #ff85c1;
-}
-
-#cookie-consent-decline {
-    background-color: #555;
-}
-
-#cookie-consent-decline:hover {
-    background-color: #777;
-}
